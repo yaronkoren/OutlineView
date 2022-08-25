@@ -1,0 +1,59 @@
+{
+	"name": "Outline View",
+	"namemsg": "outlineview-extensionname",
+	"version": "0.1",
+	"author": [
+		"Yaron Koren"
+	],
+	"descriptionmsg": "outlineview-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.34"
+	},
+	"SpecialPages": {
+		"OutlineView": "SpecialOutlineView"
+	},
+	"MessagesDirs": {
+		"OutlineView": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"OutlineViewAlias": "OutlineView.alias.php"
+	},
+	"AutoloadClasses": {
+		"SpecialOutlineView": "SpecialOutlineView.php"
+	},
+	"ResourceModules": {
+		"ext.outlineview": {
+			"scripts": "resources/OutlineView.js",
+			"styles": "resources/OutlineView.css",
+			"dependencies": "ext.outlineview.jstree"
+		},
+                "ext.outlineview.jstree": {
+                        "scripts": [
+                                "resources/jstree/jstree.js",
+                                "resources/jstree/jstree.contextmenu.js",
+                                "resources/jstree/jstree.dnd.js",
+                                "resources/jstree/jstree.types.js",
+                                "resources/jstree/jstree.wholerow.js"
+                        ],
+                        "styles": [
+                                "resources/jstree/themes/default/style.css"
+                        ],
+                        "messages": [
+                                "create",
+                                "mintydocs-tocinput-rename",
+                                "mintydocs-tocinput-changetype",
+                                "delete",
+                                "edit"
+                        ]
+                }
+        },
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "OutlineView"
+	},
+	"manifest_version": 2
+}

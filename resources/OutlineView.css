@@ -1,0 +1,11 @@
+td#menuPane {
+	vertical-align: top;
+	padding: 9px 25px 9px 9px;
+	background-color: #f8f9fa;
+}
+
+td#displayPane {
+	vertical-align: top;
+	border-left: 2px #c8ccd1 solid;
+	padding-left: 25px;
+}
