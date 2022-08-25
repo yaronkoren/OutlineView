@@ -92,6 +92,9 @@ class SpecialOutlineView extends SpecialPage {
 				$res = $cargoQuery->run();
 				foreach ( $res as $row ) {
 					$childPage = $row['_value'];
+					if ( $childPage === null || trim( $childPage ) === '' ) {
+						continue;
+					}
 					$pageChildren[$childPage] = $this->getChildren( $childPage, $depth + 1 );
 				}
 			}
