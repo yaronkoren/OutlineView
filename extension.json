@@ -29,6 +29,11 @@
 		"ext.outlineview": {
 			"scripts": "resources/OutlineView.js",
 			"styles": "resources/OutlineView.css",
+			"messages": [
+				"outlineview-viewpage",
+				"edit",
+				"formedit"
+			],
 			"dependencies": "ext.outlineview.jstree"
 		},
                 "ext.outlineview.jstree": {

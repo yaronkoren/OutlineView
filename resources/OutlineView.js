@@ -24,11 +24,16 @@ $tree.jstree({
 });
 
 function outlineViewDisplayPage( pageName ) {
-	var pageURL = mw.config.get('wgServer') + mw.config.get('wgScript') + '?title=' + pageName + '&action=render';
-	$.get( pageURL, function(data) {
-		var realPageURL = mw.config.get('wgServer') + mw.config.get('wgScript') + '?title=' + pageName;
-		var pageLink = '<a href="' + realPageURL + '" target="_blank">' + pageName + '</a>';
-		data = '<h1>' + pageLink + '</h1>' + "\n" + data;
+	var basePageURL = mw.config.get('wgServer') + mw.config.get('wgScript') + '?title=' + pageName;
+	var renderURL = basePageURL + '&action=render';
+	$.get( renderURL, function(data) {
+		var viewLink = '<a href="' + basePageURL + '" target="_blank">' + mw.msg('outlineview-viewpage') + '</a>';
+		var editURL = basePageURL + "&action=edit";
+		var editLink = '<a href="' + editURL + '" target="_blank">' + mw.msg('edit') + '</a>';
+		var formEditURL = basePageURL + "&action=formedit";
+		var formEditLink = '<a href="' + formEditURL + '" target="_blank">' + mw.msg('formedit') + '</a>';
+		data = '<div class="pageLinks">' + viewLink + ' &middot; ' + editLink + ' &middot; ' + formEditLink + "</div>\n" +
+			'<h1>' + pageName + '</h1>' + "\n" + data;
 		$('#displayPane').html(data);
 	} );
 }

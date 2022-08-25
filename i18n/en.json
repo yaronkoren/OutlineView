@@ -7,5 +7,6 @@
 	"outlineview-extensionname": "Outline View",
 	"outlineview-desc": "Provides an outline view",
 	"outlineview": "Outline view",
-	"outlineview-title": "Outline view: $1"
+	"outlineview-title": "Outline view: $1",
+	"outlineview-viewpage": "View page"
 }

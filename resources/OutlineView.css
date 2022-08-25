@@ -9,3 +9,9 @@ td#displayPane {
 	border-left: 2px #c8ccd1 solid;
 	padding-left: 25px;
 }
+
+div.pageLinks {
+	background: #f8f9fa;
+	padding: 10px;
+	border: 1px #c8ccd1 solid;
+}
