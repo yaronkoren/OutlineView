@@ -56,7 +56,7 @@ class SpecialOutlineView extends SpecialPage {
 
 		$pageChildren = [];
 		$title = Title::newFromText( $pageName );
-		if ( !$title->exists() ) {
+		if ( $title == null || !$title->exists() ) {
 			return [];
 		}
 
