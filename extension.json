@@ -32,7 +32,8 @@
 			"messages": [
 				"outlineview-viewpage",
 				"edit",
-				"formedit"
+				"formedit",
+				"outlineview-pagenotfound"
 			],
 			"dependencies": "ext.outlineview.jstree"
 		},

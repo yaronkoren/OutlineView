@@ -35,5 +35,9 @@ function outlineViewDisplayPage( pageName ) {
 		data = '<div class="pageLinks">' + viewLink + ' &middot; ' + editLink + ' &middot; ' + formEditLink + "</div>\n" +
 			'<h1>' + pageName + '</h1>' + "\n" + data;
 		$('#displayPane').html(data);
-	} );
+	} )
+	.fail( function() {
+		var viewLink = '<a href="' + basePageURL + '" class="new" target="_blank">' + pageName + '</a>';
+		$('#displayPane').html('<em>' + mw.msg('outlineview-pagenotfound', viewLink) + '</em>');
+	});
 }
