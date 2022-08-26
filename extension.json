@@ -24,7 +24,8 @@
 	},
 	"AutoloadClasses": {
 		"SpecialOutlineView": "SpecialOutlineView.php",
-		"OutlineViewAction": "OutlineViewAction.php"
+		"OutlineViewAction": "OutlineViewAction.php",
+		"OutlineViewFullAction": "OutlineViewFullAction.php"
 	},
 	"ResourceModules": {
 		"ext.outlineview": {
@@ -63,7 +64,8 @@
 		"remoteExtPath": "OutlineView"
 	},
 	"Actions": {
-		"outlineview": "OutlineViewAction"
+		"outlineview": "OutlineViewAction",
+		"outlineviewfull": "OutlineViewFullAction"
 	},
 	"Hooks": {
 		"SkinTemplateNavigation::Universal": "OutlineViewAction::displayTab"

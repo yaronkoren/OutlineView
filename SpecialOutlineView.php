@@ -15,7 +15,7 @@ class SpecialOutlineView extends SpecialPage {
 		parent::__construct( 'OutlineView' );
 	}
 
-	public function execute( $pageName ) {
+	public function execute( $pageName, $fullDisplay = false ) {
 		//$this->checkPermissions();
 
 		$out = $this->getOutput();
@@ -35,6 +35,14 @@ class SpecialOutlineView extends SpecialPage {
 		$out->setPageTitle( $this->msg( 'outlineview-title', $pageName ) );
 
 		$allChildren = $this->getChildren( $pageName, 0 );
+
+		if ( $fullDisplay ) {
+			// action=viewoutlinefull - suitable for printing.
+			$this->displayAll( $pageName, $allChildren );
+			$out->setPageTitle( "$pageName: full outline" );
+			return;
+		}
+
 		$this->getDataForNode( $pageName, $allChildren, '#' );
 
                 $mainDiv = Html::element( 'div', [
@@ -45,6 +53,11 @@ class SpecialOutlineView extends SpecialPage {
                 ] );
 
 		$text = '<table><tr><td id="menuPane">' . $mainDiv . '</td><td id="displayPane"></td></tr></table>';
+
+		$title = Title::newFromText( $pageName );
+		$fullOutlineURL = $title->getLocalURL( 'action=outlineviewfull' );
+		$text .= '<p><a href="' . $fullOutlineURL . '">' . $this->msg( 'printableversion' ) . '</a></p>';
+
 		$out->addHTML( $text );
 	}
 
@@ -119,6 +132,17 @@ class SpecialOutlineView extends SpecialPage {
 		$this->treeData[] = [ 'id' => $curID, 'parent' => $parentID, 'text' => $pageName, 'type' => 'page' ];
 		foreach ( $nodeArray as $childPage => $childNodeArray ) {
 			$this->getDataForNode( $childPage, $childNodeArray, $curID );
+		}
+	}
+
+	private function displayAll( $pageName, $nodeArray ) {
+		$out = $this->getOutput();
+		$out->addHTML("<h2>$pageName</h2>\n");
+		$title = Title::newFromText( $pageName );
+		$article = Article::newFromTitle( $title, $this->getContext() );
+		$article->view();
+		foreach ( $nodeArray as $childPage => $childNodeArray ) {
+			$this->displayAll( $childPage, $childNodeArray );
 		}
 	}
 
