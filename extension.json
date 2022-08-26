@@ -23,7 +23,8 @@
 		"OutlineViewAlias": "OutlineView.alias.php"
 	},
 	"AutoloadClasses": {
-		"SpecialOutlineView": "SpecialOutlineView.php"
+		"SpecialOutlineView": "SpecialOutlineView.php",
+		"OutlineViewAction": "OutlineViewAction.php"
 	},
 	"ResourceModules": {
 		"ext.outlineview": {
@@ -37,29 +38,35 @@
 			],
 			"dependencies": "ext.outlineview.jstree"
 		},
-                "ext.outlineview.jstree": {
-                        "scripts": [
-                                "resources/jstree/jstree.js",
-                                "resources/jstree/jstree.contextmenu.js",
-                                "resources/jstree/jstree.dnd.js",
-                                "resources/jstree/jstree.types.js",
-                                "resources/jstree/jstree.wholerow.js"
-                        ],
-                        "styles": [
-                                "resources/jstree/themes/default/style.css"
-                        ],
-                        "messages": [
-                                "create",
-                                "mintydocs-tocinput-rename",
-                                "mintydocs-tocinput-changetype",
-                                "delete",
-                                "edit"
-                        ]
-                }
-        },
+		"ext.outlineview.jstree": {
+			"scripts": [
+				"resources/jstree/jstree.js",
+				"resources/jstree/jstree.contextmenu.js",
+				"resources/jstree/jstree.dnd.js",
+				"resources/jstree/jstree.types.js",
+				"resources/jstree/jstree.wholerow.js"
+			],
+			"styles": [
+				"resources/jstree/themes/default/style.css"
+			],
+			"messages": [
+				"create",
+				"mintydocs-tocinput-rename",
+				"mintydocs-tocinput-changetype",
+				"delete",
+				"edit"
+			]
+		}
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
 		"remoteExtPath": "OutlineView"
+	},
+	"Actions": {
+		"outlineview": "OutlineViewAction"
+	},
+	"Hooks": {
+		"SkinTemplateNavigation::Universal": "OutlineViewAction::displayTab"
 	},
 	"manifest_version": 2
 }
