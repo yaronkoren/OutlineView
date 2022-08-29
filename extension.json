@@ -37,7 +37,10 @@
 				"formedit",
 				"outlineview-pagenotfound"
 			],
-			"dependencies": "ext.outlineview.jstree"
+			"dependencies": [
+				"ext.outlineview.jstree",
+				"mediawiki.rcfilters.filters.base.styles"
+			]
 		},
 		"ext.outlineview.jstree": {
 			"scripts": [

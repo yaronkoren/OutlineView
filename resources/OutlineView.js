@@ -24,6 +24,9 @@ $tree.jstree({
 });
 
 function outlineViewDisplayPage( pageName ) {
+	// Loading image - we need to override margin-top inline, unfortunately.
+	$('#displayPane').prepend('<div class="mw-rcfilters-spinner" style="margin-top: 20px;"><div class="mw-rcfilters-spinner-bounce"></div></div>');
+
 	var basePageURL = mw.config.get('wgServer') + mw.config.get('wgScript') + '?title=' + pageName;
 	var renderURL = basePageURL + '&action=render';
 	$.get( renderURL, function(data) {
