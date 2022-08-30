@@ -34,7 +34,7 @@ class SpecialOutlineView extends SpecialPage {
 		$pageName = str_replace( '_', ' ', $pageName );
 		$out->setPageTitle( $this->msg( 'outlineview-title', $pageName ) );
 
-		$allChildren = $this->getChildren( $pageName, 0 );
+		$allChildren = $this->getChildren( $pageName, 2 );
 
 		if ( $fullDisplay ) {
 			// action=viewoutlinefull - suitable for printing.
@@ -62,7 +62,9 @@ class SpecialOutlineView extends SpecialPage {
 	}
 
 	private function getChildren( $pageName, $depth ) {
-		if ( $depth > 4 ) {
+		global $wgOutlineViewMaxDepth;
+
+		if ( $depth > $wgOutlineViewMaxDepth ) {
 			// Avoid infinite loops, or just a huge tree.
 			return [];
 		}
