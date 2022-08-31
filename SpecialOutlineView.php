@@ -102,7 +102,7 @@ class SpecialOutlineView extends SpecialPage {
 					'_pageID = ' . $title->getArticleID(), // where
 					"$tableName._ID = $fieldTableName._rowID", // join on
 					null, null,
-					"_rowID ASC", // order by
+					"_position ASC", // order by
 					null, null );
 				$res = $cargoQuery->run();
 				foreach ( $res as $row ) {
